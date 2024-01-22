@@ -1,0 +1,67 @@
+body {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+
+}
+.membership-form {
+    max-width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    text-align: center;
+}
+
+.subscription-plans {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.plan {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.plan5 {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+button {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+  
+button:hover {
+    background-color: #0056b3;
+}
+  
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + .plan {
+    background-color: #e6e6e6;
+}
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор тарифа абонемента</title>
+    <link rel="stylesheet" crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+	
+    <script crossorigin="anonymous"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+	</script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='member.css') }}">
+</head>
+<body>
+    <div class="membership-form">
+        <h2>Выберите тариф абонемента</h2>
+        <form action="/membership" method="POST">
+            <div class="subscription-plans">
+                <label>
+                    <input type="radio" id="1" name="subscription" value="1" checked>
+                    <div class="plan">
+                        <h3>На 1 день</h3>
+                        <p>Доступ к тренажерному залу</p>
+                        <p>Групповые занятия</p>
+                        <p>Цена: 140руб.</p>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" id="2" name="subscription" value="2">
+                    <div class="plan">
+                        <h3> На 12 дней</h3>
+                        <p>Полный доступ ко всем зонам</p>
+                        <p>Групповые занятия</p>
+                        <p>Цена: 1500руб. </p>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" id="3" name="subscription" value="3">
+                    <div class="plan">
+                        <h3>На 1 месяц</h3>
+                        <p>Безлимитный доступ ко всем зонам</p>
+                        <p>Групповые и индивидуальные тренировки</p>
+                        <p>Цена: 1900руб.</p>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" id="4" name="subscription" value="4">
+                    <div class="plan">
+                        <h3>На 3 месяца</h3>
+                        <p>Безлимитный доступ ко всем зонам</p>
+                        <p>Групповые и индивидуальные тренировки</p>
+                        <p>Цена: 5000руб.</p>
+                    </div>
+                </label>
+            </div>
+            <br>
+            <input type="checkbox" id="5" name="plan5">
+            <label for="plan5">Одна тренировка с персональным тренером <br>Цена: 200руб.</label>
+            <button type="submit">Далее</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация в спортзале</title>
+
+    <link rel="stylesheet" crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+	
+    <script crossorigin="anonymous"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+	</script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='reg.css') }}">
+</head>
+<body>
+    <div class="registration-form">
+        <h2>Форма регистрации клиента спортзала</h2>
+        <form action="/reg" method="POST">
+            <div class="form-group">
+                <label for="full_name">Полное имя:</label>
+                <input type="text" class="form-control" id="full_name" pattern="^[А-Яа-яЁё\s]+$" minlength="1" maxlength="20" name="full_name" />
+                <span class="form__error">Это поле должно содержать только кириллицу</span>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="tel" name="phone" id="phone" pattern="[0-9]{11}" minlength="11" maxlength="11" />
+                <span class="form__error">Это поле должно содержать телефон в формате <br>81234567890</span>
+            </div>
+            <div class="form-group">
+                <label for="address">Адрес:</label>
+                <input type="text" id="address" name="address" minlength="1" maxlength="20" required>
+            </div>
+            <div class="form-group">
+                <label for="passport_data">Паспортные данные:</label>
+                <input placeholder="серия" class="passport" type="text" pattern="[0-9]{4}" minlength="4" maxlength="4" id="passport_number" name="passport_number" required>
+                <span class="form__error">Это поле должно содержать серию паспорта в формате <br>1234</span>
+                <input placeholder="номер" class="passport" type="text" pattern="[0-9]{6}" minlength="6" maxlength="6" id="passport_series" name="passport_series" required>
+                <span class="form__error">Это поле должно содержать номер паспорта в формате <br>567890</span>
+            </div>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+</body>
+</html>

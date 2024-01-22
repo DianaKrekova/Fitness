@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    
+    <link rel="stylesheet" crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+    
+	<script crossorigin="anonymous"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+	</script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='schedule.css') }}">
+</head>
+
+<body>
+    <h2>Расписание</h2>
+    <form action="/schedule" method="POST">
+        <label for="id">id:</label>
+        <input name="id" id="id" pattern="[0-9]{,3}"/>
+        <label for="client">Клиент:</label>
+        <input type="text" id="name" pattern="^[А-Яа-яЁё\s]+$" minlength="1" maxlength="20" name="name" />
+        <label for="coach">Тренер:</label>
+        <select name="coach" id="coach-select">
+            <option value=""></option>
+            <option value="Игнат Денисов">Игнат Денисов</option>
+            <option value="Мария Аносова">Мария Аносова</option>
+            <option value="Вячеслав Рядов">Вячеслав Рядов</option>
+            <option value="Анна Петрова">Анна Петрова</option>
+            <option value="Иван Лазаренко">Иван Лазаренко</option>
+        </select>
+        <label for="zone">Зона:</label>
+            <select name="zone" id="zone-select">
+                <option value=""></option>
+                <option value="Фитнесс">Фитнесс</option>
+                <option value="Общая зона">Общая зона</option>
+                <option value="Йога">Йога</option>
+                <option value="Зона свободных весов">Зона свободных весов</option>
+            </select>
+        <button class="btn btn-primary">Поиск</button>
+        <a href="/schedule" class="btn btn-primary">Сбросить</a>    
+    </form>
+    <br>
+    <div class="schedule">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">id</th>
+                <th scope="col">Клиент</th>
+                <th scope="col">Начало</th>
+                <th scope="col">Конец</th>
+                <th scope="col">Ответственный тренер</th>
+                <th scope="col">Услуга</th>
+                <th scope="col">Зона</th>
+                <th scope="col">Тип тренировки</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in sch %}
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                    <td>{{item[5]}}</td>
+                    <td>{{item[6]}}</td>
+                    <td>{{item[7]}}</td>
+                    <td><a href='update/{{item[0]}}'>Edit</a></td>
+                    <td><a href='delete/{{item[0]}}'>Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>

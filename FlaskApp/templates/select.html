@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор</title>
+    <link rel="stylesheet" crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+    
+	<script crossorigin="anonymous"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+	</script>
+   
+   <link rel="stylesheet" href="{{ url_for('static', filename='select.css') }}">
+</head>
+<body>
+    <h2>Выберите</h2>
+    {% with msg = get_flashed_messages() %}
+    {% if msg %}
+    {% for message in msg %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="select-form">
+        <form action="/select" method="POST">
+            <label class="time_label" for="coach">В какое время удобно посещать?</label>
+            <div class="time_block">
+                <label class="s">С</label>
+                <input type="time" id="start-time" name="start-time" value="09:00">
+                <label class="s">до</label>
+                <input type="time" id="end-time" name="end-time" value="00:00">
+            </div>
+            <br>
+            <label for="coach">Тренера:</label>
+            <select name="coach" id="coach-select">
+                <option value="3"></option>
+                <option value="1">Игнат Денисов</option>
+                <option value="2">Мария Аносова</option>
+                <option value="3">Вячеслав Рядов</option>
+                <option value="4">Анна Петрова</option>
+                <option value="5">Иван Лазаренко</option>
+            </select>
+            <br>
+            <label for="service">Услугу:</label>
+            <select name="service" id="service-select">
+                <option value="1"></option>
+                <option value="1">Силовая тренировка</option>
+                <option value="2">Аэробная нагрузка</option>
+            </select>
+            <br>
+            <label for="zone">Зону:</label>
+            <select name="zone" id="zone-select">
+                <option value="2"></option>
+                <option value="1">Фитнесс</option>
+                <option value="2">Общая зона</option>
+                <option value="4">Йога</option>
+                <option value="5">Зона свободных весов</option>
+            </select>
+            <br>
+            <label for="training">Тренировку:</label>
+            <select name="training" id="training-select">
+                <option value="1"></option>
+                <option value="1">Групповая</option>
+                <option value="2">Одиночная</option>
+            </select>
+            <br>
+            <button class="btn btn-primary">Далее</button>
+        </form>
+    </div>
+</body>
+</html>
